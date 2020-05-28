@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation"
+            app:startDestination="@id/titleFragment">
+
+    <fragment android:id="@+id/titleFragment"
+              android:name="com.oseketechnologies.kotlinfragment.TitleFragment"
+              android:label="TitleFragment">
+
+        <action android:id="@+id/action_titleFragment_to_gameFragment"
+                app:destination="@id/gameFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/gameFragment"
+              android:name="com.oseketechnologies.kotlinfragment.GameFragment"
+              android:label="fragment_game"
+              tools:layout="@layout/fragment_game">
+        <action android:id="@+id/action_gameFragment_to_gameOverFragment"
+                app:destination="@id/gameOverFragment"
+                app:popUpToInclusive="false"
+                app:popUpTo="@+id/titleFragment"/>
+        <action android:id="@+id/action_gameFragment_to_gameWonFragment"
+                app:destination="@id/gameWonFragment"
+                app:popUpTo="@+id/titleFragment"
+                app:popUpToInclusive="false"/>
+    </fragment>
+    <fragment android:id="@+id/gameOverFragment"
+              android:name="com.oseketechnologies.kotlinfragment.GameOverFragment"
+              android:label="fragment_game_over"
+              tools:layout="@layout/fragment_game_over">
+        <action android:id="@+id/action_gameOverFragment_to_titleFragment" app:destination="@id/titleFragment"
+                app:popUpTo="@+id/titleFragment" app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/gameWonFragment"
+              android:name="com.oseketechnologies.kotlinfragment.GameWonFragment"
+              android:label="fragment_game_won"
+              tools:layout="@layout/fragment_game_won">
+        <action android:id="@+id/action_gameWonFragment_to_titleFragment" app:destination="@id/titleFragment"
+                app:popUpTo="@+id/titleFragment" app:popUpToInclusive="true"/>
+        <argument android:name="numQuestion" app:argType="integer"/>
+        <argument android:name="numCorrect" app:argType="integer"/>
+    </fragment>
+    <fragment android:id="@+id/aboutFragment" android:name="com.oseketechnologies.kotlinfragment.aboutFragment"
+              android:label="fragment_about" tools:layout="@layout/fragment_about"/>
+    <fragment android:id="@+id/contactFragment" android:name="com.oseketechnologies.kotlinfragment.ContactFragment"
+              android:label="fragment_contact" tools:layout="@layout/fragment_contact"/>
+    <fragment android:id="@+id/ruleFragment" android:name="com.oseketechnologies.kotlinfragment.RuleFragment"
+              android:label="fragment_rule" tools:layout="@layout/fragment_rule"/>
+</navigation>
